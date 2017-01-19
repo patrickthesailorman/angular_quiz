@@ -13,7 +13,11 @@
 Instantiate a new Angular module called `BlogPost` that takes `ui.router` as a dependency. Use Angular code style conventions.
 
 **Your answer:**
-```js
+```app.js
+(function(){
+angular
+ .module=('BlogPost', ui.router)
+})();
 
 ```
 
@@ -30,7 +34,7 @@ Which *one* of the following buttons would *not* be displayed?
 ```html
 [ ] A: <button data-ng-if="status">Click</button>
 [ ] B: <button data-ng-show="status">Click</button>
-[ ] C: <button data-ng-hide="status">Click</button>
+[X] C: <button data-ng-hide="status">Click</button>
 [ ] D: <button>{{status}}</button>
 ```
 
@@ -45,7 +49,7 @@ One button below has an `ng-click` attribute; the other has `data-ng-click` inst
 
 **Your answer:**
 
-> ...
+> ...They are the same. ng-click seems to be preferred.
 
 ## Question 4
 
@@ -53,7 +57,7 @@ Which of the following demonstrates the best usage of `ng-app`? **Explain your a
 
 **Your answer:**
 
-> ...
+> ...A. The browser reads, html first top to bottom, so the first opportunity to send it to the IIFE in app.js is the better..
 
 ### A:
 ```html
@@ -72,7 +76,7 @@ Which of the following demonstrates the best usage of `ng-app`? **Explain your a
 ### B:
 ```html
 <!DOCTYPE html>
-<html> 
+<html>
   <head data-ng-app="myapp">
     <title>My app</title>
   </head>
@@ -86,7 +90,7 @@ Which of the following demonstrates the best usage of `ng-app`? **Explain your a
 ### C:
 ```html
 <!DOCTYPE html>
-<html> 
+<html>
   <head>
     <title>My app</title>
   </head>
@@ -106,7 +110,7 @@ Which one of the following concepts does this best illustrate?
 ```
 [ ] A: Modularity
 [ ] B: MVC
-[ ] C: Two-way data-binding
+[X] C: Two-way data-binding
 [ ] D: Separation of concerns
 ```
 
@@ -116,7 +120,8 @@ What is an IIFE, and why might you use it?
 
 **Your answer:**
 
-> ...
+> ...Immediately invoked function expression
+>  Immediately-invoked function expressions can be used to avoid variable hoisting from within blocks, protect against polluting the global environment and simultaneously allow public access to methods while retaining privacy for variables defined within the function.
 
 ## Question 7
 
@@ -124,7 +129,7 @@ What is the `ui-sref` directive, and how is it used?
 
 **Your answer:**
 
-> ...
+> ...A directive that binds a link (<a> tag) to a state. If the state has an associated URL, the directive will automatically generate & update the href attribute via the $state.href() method. Clicking the link will trigger a state transition with optional parameters. Also middle-clicking, right-clicking, and ctrl-clicking on the link will be handled natively by the browser.
 
 ## Question 8
 
@@ -132,7 +137,8 @@ One of the lines of code in the following snippet will throw an error. Which one
 
 **Your answer:**
 
-> ...
+> ... I ran it. no errors. It's a clean and working fizzbuzz.
+>
 
 ```js
 /*1*/ "use strict";
@@ -150,8 +156,23 @@ One of the lines of code in the following snippet will throw an error. Which one
 Custom directives can be embedded in HTML four different ways. Demonstrate **two** of these four with a directive called `my-directive`. (Hint: "MACE")
 
 **Your answer:**
-```html
+```js
+.myDirective('myCustomer', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'my-customer.html'
+  };
+});
 
+The restrict option is typically set to:
+
+'A' - only matches attribute name
+'E' - only matches element name
+'C' - only matches class name
+'M' - only matches comment
+These restrictions can all be combined as needed:
+
+'AEC' - matches either attribute or element or class name
 ```
 
 ## Question 10
@@ -160,7 +181,7 @@ Of the three following options, which is the most "correct" way of organizing th
 
 **Your answer:**
 
-> ...
+> ...C.
 
 
 ### A:
@@ -212,4 +233,3 @@ Of the three following options, which is the most "correct" way of organizing th
   songs/
     form.html
 ```
-
